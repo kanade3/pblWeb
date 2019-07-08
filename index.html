@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>kanadeのサイト</title>
 
+    <link rel="stylesheet" type="text/css" href="toIndex.css">
+
     <script>
 
         document.onkeydown = typeGame;  //キー押下時に関数typeGame()を呼び出す
@@ -27,7 +29,10 @@
         var mondai = "";
         var cnt = 0;
         var typStart, typEnd;
-        let q_num = 20
+        let q_num = 20;
+        let x = 100;
+        let cntmiss = 0;
+        let loseflag=0;
 
 
         //0～25までの乱数を200個作成して配列rndに格納する関数
@@ -106,14 +111,35 @@
                     //問題終了を告げる文字列を作成
                     //問題枠にゲーム終了を表示
                     document.getElementById("waku").innerHTML = "GAME終了　時間：" + sec + "秒" + msec;
+                    restart()
                 }
+            } else {
+                if (!loseflag) {
+                    x *= 1.2;
+                    document.getElementById('waku').style.fontSize = x + '%';
+                }
+                cntmiss += 1;
+                if (cntmiss >= 5) {
+                    loseflag=1;
+                    document.getElementById('gazo').innerHTML = '<img src="lose.jpg" width="540" height="540" alt="excellent">';
+                    restart();
+                }
+
             }
+
+        }
+
+        function restart() {
+            document.getElementById("waku").innerHTML = 'リロードしてもう一度トライ'
         }
     </script>
 </head>
-
+<h1>タイピングゲーム！！複数回間違うとアウトだよ</h1>
 <body onload="gameSet()">
-
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="content"></div>
 <div id="waku" style="text-align:center;"></div>
 <div id="gazo" style="text-align:center;"></div>
 
