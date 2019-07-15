@@ -12,9 +12,9 @@
 
 
         //文字を格納する配列
-        var moji = ["Ａ", "Ｂ", "Ｃ", "Ｄ", "Ｅ", "Ｆ", "Ｇ", "Ｈ", "Ｉ",
-            "Ｊ", "Ｋ", "Ｌ", "Ｍ", "Ｎ", "Ｏ", "Ｐ", "Ｑ", "Ｒ",
-            "Ｓ", "Ｔ", "Ｕ", "Ｖ", "Ｗ", "Ｘ", "Ｙ", "Ｚ"];
+        var moji = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+            "j", "k", "l", "m", "n", "o", "p", "q", "r",
+            "s", "t", "u", "v", "w", "x", "y", "z"];
 
         //キーコードを格納する配列
         var kcode = [65, 66, 67, 68, 69, 70, 71, 72, 73,
@@ -102,7 +102,7 @@
                     if (sec >= 30) {
                         document.getElementById('gazo').innerHTML = '<img src="good.png" width="540" height="540" alt="good">';
                     } else {
-                        document.getElementById('gazo').innerHTML = '<img src="excellent.jpg" width="540" height="540" alt="excellent">';
+                        document.getElementById('gazo').innerHTML = '<img src="excellent.jpg" width="540" height="270" alt="excellent">';
                     }
 
                     //1000で割った「余り(%で取得できる）」でミリ秒を取得
@@ -121,7 +121,7 @@
                 cntmiss += 1;
                 if (cntmiss >= 5) {
                     loseflag=1;
-                    document.getElementById('gazo').innerHTML = '<img src="lose.jpg" width="540" height="540" alt="excellent">';
+                    document.getElementById('gazo').innerHTML = '<img src="lose.jpg" width="1024" height="800" alt="lose">';
                     restart();
                 }
 
@@ -130,7 +130,7 @@
         }
 
         function restart() {
-            document.getElementById("waku").innerHTML = 'リロードしてもう一度トライ'
+            document.getElementById("waku").innerHTML = "リロードしてもう一度";
         }
     </script>
 </head>
@@ -139,6 +139,7 @@
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 <div class="content"><div id="waku" style="text-align:center;"></div></div>
+
 <body onload="gameSet()">
 <div id="gazo" style="text-align:center;"></div>
 
